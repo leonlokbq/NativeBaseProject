@@ -31,7 +31,7 @@ class BasicTab extends Component {
           <Right />
         </Header>
 
-        <Tabs>
+        <Tabs tabBarPosition="bottom">
           <Tab heading="Tab1">
             <TabOne />
           </Tab>

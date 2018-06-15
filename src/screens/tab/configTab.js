@@ -32,7 +32,7 @@ class ConfigTab extends Component {
           </Body>
           <Right />
         </Header>
-        <Tabs style={{ elevation: 3 }}>
+        <Tabs tabBarPosition="bottom" style={{ elevation: 3 }}>
           <Tab
             heading={
               <TabHeading>

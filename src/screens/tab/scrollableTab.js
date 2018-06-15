@@ -34,7 +34,7 @@ class BasicTab extends Component {
           <Right />
         </Header>
 
-        <Tabs renderTabBar={() => <ScrollableTab />}>
+        <Tabs tabBarPosition="bottom" renderTabBar={() => <ScrollableTab />}>
           <Tab heading="Tab1">
             <TabOne />
           </Tab>
