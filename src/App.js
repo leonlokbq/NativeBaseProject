@@ -1,6 +1,8 @@
 import React from "react";
 import { Root } from "native-base";
 import { StackNavigator, DrawerNavigator } from "react-navigation";
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
 import Header from "./screens/Header/";
 import Header1 from "./screens/Header/1";
@@ -134,6 +136,16 @@ import Actionsheet from "./screens/actionsheet";
 import NHAccordion from "./screens/accordion/";
 import NHDatePicker from "./screens/datepicker/";
 
+import RecordDetail from "./screens/tab/recordDetail";
+import SPNav from "./screens/tab/SPNav";
+import GPSPage from "./screens/gps/index";
+import Login from "./screens/login/index";
+import BLEPage from "./screens/ble/index";
+import QRPage from "./screens/qr/index";
+import allReducers from './reducers/index.js';
+
+const store = createStore(allReducers)
+
 const Drawer = DrawerNavigator(
   {
     Home: { screen: Home },
@@ -162,10 +174,18 @@ const Drawer = DrawerNavigator(
     NHToast: { screen: NHToast },
     Actionsheet: { screen: Actionsheet },
     NHAccordion: { screen: NHAccordion },
-    NHDatePicker: { screen: NHDatePicker }
+    NHDatePicker: { screen: NHDatePicker },
+    ConfigTab: { screen: ConfigTab },
+    RecordDetail: { screen: RecordDetail },
+    SPNav: { screen: SPNav },
+    GPSPage: { screen: GPSPage },
+    Login: { screen: Login },
+    BLEPage: { screen: BLEPage },
+    QRPage: { screen: QRPage }
   },
   {
-    initialRouteName: "Home",
+    //initialRouteName: "RecordDetail",
+    initialRouteName: "NHTab",
     contentOptions: {
       activeTintColor: "#e91e63"
     },
@@ -295,7 +315,12 @@ const AppNavigator = StackNavigator(
     AccordionIcon: { screen: AccordionIcon },
     AccordionIconStyle: { screen: AccordionIconStyle },
     AccordionHeaderContentStyle: { screen: AccordionHeaderContentStyle },
-    AccordionCustomHeaderContent: { screen: AccordionCustomHeaderContent }
+    AccordionCustomHeaderContent: { screen: AccordionCustomHeaderContent },
+    RecordDetail: { screen: RecordDetail },
+    GPSPage: { screen: GPSPage },
+    BLEPage: { screen: BLEPage },
+    QRPage: { screen: QRPage }
+
   },
   {
     initialRouteName: "Drawer",
@@ -304,6 +329,8 @@ const AppNavigator = StackNavigator(
 );
 
 export default () =>
+
   <Root>
-    <AppNavigator />
-  </Root>;
+        <Provider store={store}><AppNavigator /></Provider>
+  </Root>
+  ;

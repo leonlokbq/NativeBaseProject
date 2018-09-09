@@ -1,44 +1,71 @@
 import React, { Component } from "react";
-import { Content, Card, CardItem, Text, Body } from "native-base";
+import { Platform } from "react-native";
+import { Content, Card, CardItem, Text, Body, List, ListItem, Left,
+  Right,
+  Button,
+  Icon, Title } from "native-base";
+import { StackNavigator, DrawerNavigator } from "react-navigation";
+
+import RecordDetail from "./recordDetail";
+
+  const datas = [
+    {
+      route: "RecordDetail",
+      text: "Record 1"
+    },
+    {
+      route: "RecordDetail",
+      text: "Record 2"
+    },
+    {
+      route: "RecordDetail",
+      text: "Record 3"
+    },
+    {
+      route: "RecordDetail",
+      text: "Record 4"
+    },
+    {
+      route: "RecordDetail",
+      text: "Record 5"
+    },
+    {
+      route: "RecordDetail",
+      text: "Record 6"
+    }
+  ];
+
+
+
 
 export default class TabOne extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <Content padder>
-        <Card>
-          <CardItem>
+      <List
+        dataArray={datas}
+        renderRow={data =>
+          <ListItem
+            button
+            onPress={() => this.props.navigation.navigate('RecordDetail')}
+          >
+            <Left>
+              <Button style={{ backgroundColor: "#00FF00" }}>
+                <Icon active name="ios-checkmark-circle" />
+              </Button>
+            </Left>
             <Body>
-              <Text>NativeBase is open source and free.</Text>
+              <Text>{data.text}</Text>
             </Body>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>Platform specific codebase for components</Text>
-            </Body>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>
-                Any native third-party libraries can be included along with
-                NativeBase.
-              </Text>
-            </Body>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>
-                Single file to theme your app and NativeBase components.
-              </Text>
-            </Body>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>
-                Gives an ease to include different font types in your app.
-              </Text>
-            </Body>
-          </CardItem>
-        </Card>
+            <Right>
+              <Text></Text>
+              {Platform.OS === "ios" && <Icon active name="arrow-forward" />}
+            </Right>
+          </ListItem>}
+      />
       </Content>
     );
   }

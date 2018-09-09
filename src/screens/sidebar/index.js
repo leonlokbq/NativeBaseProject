@@ -13,30 +13,62 @@ import {
 } from "native-base";
 import styles from "./style";
 
-const drawerCover = require("../../../assets/drawer-cover.png");
-const drawerImage = require("../../../assets/logo-kitchen-sink.png");
+
+import IconF from 'react-native-vector-icons/FontAwesome'
+
+const drawerCover = require("../../../assets/hkebg.png");
+const drawerImage = require("../../../assets/HKE_logo.png");
 const datas = [
-  {
+  /*{
     name: "Anatomy",
     route: "Anatomy",
     icon: "phone-portrait",
     bg: "#C5F442"
+  },*/
+  {
+    name: "Sign In",
+    route: "Login",
+    icon: "list",
+    bg: "#AB6AED"
   },
   {
-    name: "Header",
-    route: "Header",
-    icon: "arrow-up",
-    bg: "#477EEA",
-    types: "10"
+    name: "SharePoint",
+    route: "NHTab",
+    icon: "list",
+    bg: "#AB6AED",
+    types: "3"
+  },
+  /*{
+    name: "Detail",
+    route: "RecordDetail",
+    icon: "paper",
+    bg: "#48525D"
+  },*/
+  {
+    name: "GPS",
+    route: "GPSPage",
+    icon: "compass",
+    bg: "#48525D"
   },
   {
-    name: "Footer",
-    route: "Footer",
-    icon: "arrow-down",
-    bg: "#DA4437",
-    types: "4"
+    name: "QR Code Scanner",
+    route: "QRPage",
+    icon: "qrcode",
+    bg: "#477EEA"
   },
   {
+    name: "Bluetooth",
+    route: "BLEPage",
+    icon: "bluetooth",
+    bg: "#DA4437"
+  },
+   {
+      name: "Signout",
+      route: "Footer",
+      icon: "level-down",
+      bg: "#DA4437"
+    },
+  /*{
     name: "Accordion",
     route: "NHAccordion",
     icon: "repeat",
@@ -162,13 +194,6 @@ const datas = [
     bg: "#BE6F50"
   },
   {
-    name: "Tabs",
-    route: "NHTab",
-    icon: "home",
-    bg: "#AB6AED",
-    types: "3"
-  },
-  {
     name: "Thumbnail",
     route: "NHThumbnail",
     icon: "image",
@@ -187,7 +212,7 @@ const datas = [
     route: "NHTypography",
     icon: "paper",
     bg: "#48525D"
-  }
+  }*/
 ];
 
 class SideBar extends Component {
@@ -218,7 +243,7 @@ class SideBar extends Component {
                 onPress={() => this.props.navigation.navigate(data.route)}
               >
                 <Left>
-                  <Icon
+                  <IconF
                     active
                     name={data.icon}
                     style={{ color: "#777", fontSize: 26, width: 30 }}
@@ -239,7 +264,7 @@ class SideBar extends Component {
                     >
                       <Text
                         style={styles.badgeText}
-                      >{`${data.types} Types`}</Text>
+                      >{`${data.types} Drafts`}</Text>
                     </Badge>
                   </Right>}
               </ListItem>}
